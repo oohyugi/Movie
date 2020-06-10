@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.yogi.movie.features.home.ui.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/home_fragment">
+
+        <action
+            android:id="@+id/action_home_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
+        <action
+            android:id="@+id/action_home_to_FavoriteFragment"
+            app:destination="@id/favoriteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailFragment"
+        android:name="com.yogi.movie.features.detail.ui.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/detail_fragment">
+        <argument
+            android:name="item"
+            android:defaultValue="@null"
+            app:argType="com.yogi.movie.core.model.MovieMdl"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.yogi.movie.features.favorite.ui.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/favorite_fragment">
+        <action
+            android:id="@+id/action_favorite_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
+    </fragment>
+</navigation>
