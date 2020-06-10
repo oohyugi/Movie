@@ -31,7 +31,7 @@ class HomeFragment : BaseFragment() {
     private val homeViewModel: HomeViewModel by viewModel()
 
     private lateinit var movieAdapter: MovieListAdapter
-
+    private lateinit var mLayoutManager: LinearLayoutManager
     private var mCategoryName = "popular"
     private var mCategoryTitle = "Popular"
     override fun onCreateView(
@@ -56,6 +56,7 @@ class HomeFragment : BaseFragment() {
                         category?.let {
                             mCategoryName = it.name.toLowerCase(Locale.getDefault())
                             mCategoryTitle = it.title
+                            movieAdapter.submitList(null)
                             (activity as AppCompatActivity?)?.supportActionBar?.title =
                                 "Movie - $mCategoryTitle"
                             homeViewModel.resetAndLoadMovie(mCategoryName)
@@ -126,7 +127,8 @@ class HomeFragment : BaseFragment() {
             findNavController().navigate(R.id.action_home_to_DetailFragment, bundle)
 
         })
-        val mLayoutManager = LinearLayoutManager(activity)
+
+        mLayoutManager = LinearLayoutManager(activity)
 
         var scrollListener = object : EndlessRecyclerViewScrollListener(mLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
