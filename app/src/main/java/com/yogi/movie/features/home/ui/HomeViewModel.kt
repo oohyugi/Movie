@@ -71,7 +71,7 @@ class HomeViewModel(private val homeRepo: HomeRepo) : ViewModel() {
 
         mlist.clear()
         mPage = 1
-        loadMovie(category = category, page = mPage, isLoadMore = false)
+        loadMovie(category = category, page = mPage, isLoadMore = true)
 
 
     }

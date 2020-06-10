@@ -56,7 +56,6 @@ class HomeFragment : BaseFragment() {
                         category?.let {
                             mCategoryName = it.name.toLowerCase(Locale.getDefault())
                             mCategoryTitle = it.title
-                            movieAdapter.submitList(null)
                             (activity as AppCompatActivity?)?.supportActionBar?.title =
                                 "Movie - $mCategoryTitle"
                             homeViewModel.resetAndLoadMovie(mCategoryName)
@@ -130,7 +129,7 @@ class HomeFragment : BaseFragment() {
 
         mLayoutManager = LinearLayoutManager(activity)
 
-        var scrollListener = object : EndlessRecyclerViewScrollListener(mLayoutManager) {
+        val scrollListener = object : EndlessRecyclerViewScrollListener(mLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 homeViewModel.loadMoreData(mCategoryName)
             }

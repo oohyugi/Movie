@@ -60,7 +60,7 @@ class MovieListAdapter(val listener: MovieListAdapterListener) :
         ) {
 
             data?.let {
-                Glide.with(itemView).load("https://image.tmdb.org/t/p/w500${it.posterPath}")
+                Glide.with(itemView).load("https://image.tmdb.org/t/p/original${it.posterPath}")
                     .into(imgMovie)
                 tvTitle.text = it.title
                 tvDate.text = it.releaseDate
